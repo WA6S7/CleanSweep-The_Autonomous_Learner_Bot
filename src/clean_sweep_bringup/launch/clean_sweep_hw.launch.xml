@@ -1,0 +1,87 @@
+<launch>
+    <!-- Q-Learning Hardware launch: 3-layer localisation stack + coverage executor. -->
+
+    <arg name="qtable_path"  default="$(env HOME)/thesis_ws/src/clean_sweep_rl_v2/results_20cm_cells/q_table_final.pkl"/>
+    <arg name="cell_size"    default="0.20"/>
+    <arg name="sdf_path"     default="$(find-pkg-share clean_sweep_bringup)/worlds/env1_bedroom.sdf"/>
+    <arg name="serial_port"  default="/dev/ttyACM0"/>
+    <arg name="video_device" default="/dev/video0"/>
+
+    <let name="urdf_path"
+        value="$(find-pkg-share clean_sweep_description)/urdf/clean_sweep.urdf.xacro"/>
+    <let name="ekf_config"
+        value="$(find-pkg-share clean_sweep_description)/config/ekf.yaml"/>
+    <let name="rviz_config_path"
+        value="$(find-pkg-share clean_sweep_description)/rviz/urdf_config.rviz"/>
+
+    <!-- Robot state publisher -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" value="$(command 'xacro $(var urdf_path)')"/>
+    </node>
+
+    <!-- Serial bridge: Arduino motors + ultrasonics + IMU -->
+    <node pkg="clean_sweep_bringup" exec="serial_bridge_node.py"
+          name="serial_bridge" output="screen">
+        <param name="serial_port" value="$(var serial_port)"/>
+    </node>
+
+    <!-- Layer 1: Dead-reckoning odometry (cmd_vel + IMU heading) -->
+    <node pkg="clean_sweep_bringup" exec="cmd_vel_odom_node.py"
+          name="cmd_vel_odom" output="screen">
+        <param name="publish_rate_hz" value="50.0"/>
+        <param name="use_imu_heading" value="true"/>
+        <param name="linear_scale"    value="1.0"/>
+        <param name="publish_tf"      value="true"/>
+        <param name="initial_x"       value="1.085"/>
+        <param name="initial_y"       value="-0.55"/>
+        <param name="initial_yaw"     value="-1.5708"/>
+        <param name="gyro_sign"       value="1.0"/>
+    </node>
+
+    <!-- USB camera driver -->
+    <node pkg="v4l2_camera" exec="v4l2_camera_node" name="camera" output="screen">
+        <param name="video_device" value="$(var video_device)"/>
+        <param name="image_size" value="[640,480]"/>
+        <remap from="/image_raw" to="/camera/image_raw"/>
+        <remap from="/camera_info" to="/camera/camera_info"/>
+    </node>
+
+    <!-- Layer 3: ArUco marker localisation -->
+    <node pkg="clean_sweep_bringup" exec="aruco_localizer_node.py"
+          name="aruco_localizer" output="screen">
+        <param name="process_rate_hz"      value="5.0"/>
+        <param name="marker_size_m"        value="0.15"/>
+        <param name="publish_debug_image"  value="true"/>
+        <param name="cam_x_on_robot"       value="0.14"/>
+        <param name="cam_z_on_robot"       value="0.19"/>
+        <param name="cam_pitch_rad"        value="-0.349"/>
+    </node>
+
+    <!-- EKF: fuses odom + IMU + ArUco into /odometry/filtered -->
+    <node pkg="robot_localization" exec="ekf_node"
+          name="ekf_filter_node" output="screen">
+        <param name="use_sim_time" value="false"/>
+        <param from="$(var ekf_config)"/>
+    </node>
+
+    <!-- Coverage monitor (tracks which cells have been visited) -->
+    <node pkg="clean_sweep_bringup" exec="coverage_monitor_hw.py"
+          name="coverage_monitor" output="screen">
+        <param name="mode"        value="room_manifest"/>
+        <param name="pose_source" value="odom"/>
+        <param name="odom_topic"  value="/odometry/filtered"/>
+        <param name="room_x"      value="2.77"/>
+        <param name="room_y"      value="3.30"/>
+    </node>
+
+    <!-- Q-Learning Coverage executor -->
+    <node pkg="clean_sweep_bringup" exec="coverage_executor_gazebo.py"
+          name="coverage_executor" output="screen">
+        <param name="qtable_path"   value="$(var qtable_path)"/>
+        <param name="cell_size"     value="$(var cell_size)"/>
+        <param name="sdf_path"      value="$(var sdf_path)"/>
+        <param name="odom_topic"    value="/odometry/filtered"/>
+        <param name="require_aruco" value="true"/>
+    </node>
+
+</launch>

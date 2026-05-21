@@ -1,0 +1,15 @@
+<launch>
+
+    <arg name="qtable_path" default="/home/user/thesis_ws/src/clean_sweep_rl_v2/results_20cm_cells/q_table_final.pkl"/>
+    <arg name="cell_size"   default="0.20"/>
+    <arg name="sdf_path"    default="$(find-pkg-share clean_sweep_bringup)/worlds/env1_bedroom.sdf"/>
+
+    <node pkg="clean_sweep_bringup"     exec="coverage_executor_gazebo.py"
+            name="coverage_executor"    output="screen">
+            
+        <param name="qtable_path" value="$(var qtable_path)"/>
+        <param name="cell_size"   value="$(var cell_size)"/>
+        <param name="sdf_path"    value="$(var sdf_path)"/>
+    </node>
+
+</launch>
