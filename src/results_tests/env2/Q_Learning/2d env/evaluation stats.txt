@@ -1,0 +1,75 @@
+[room] Pruned 1 disconnected free region(s) (133 cells) outside the main interior
+[room] Loaded 'real_corridor.sdf'  grid=17×41  interior_free=310  walls=387
+[CoverageEnv] grid=17×41  interior=310  strips=4  objects_per_ep=0  obj_size=1–3cells (10–30cm)  state_space=1,024
+[QLearningAgent] Loaded ← ql_env2_corridor/q_table_final.pkl  (266 states)
+
+── Episode 1  (start=(8, 37)  objects=0) ──
+  strip order  : [3, 2, 0, 1]
+  steps=433  reward=331.2  coverage=100.0%  ✓ COMPLETE
+  overlap      : 67 cells  (21.6% of floor)  = 26800 cm²  | extra visits: 124  | max: 5×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep1_final.png  (path length: 434 positions)
+
+── Episode 2  (start=(10, 3)  objects=0) ──
+  strip order  : [3, 0, 1, 2]
+  steps=423  reward=332.2  coverage=100.0%  ✓ COMPLETE
+  overlap      : 74 cells  (23.9% of floor)  = 29600 cm²  | extra visits: 114  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep2_final.png  (path length: 424 positions)
+
+── Episode 3  (start=(5, 17)  objects=0) ──
+  strip order  : [0, 1, 3, 2]
+  steps=436  reward=330.9  coverage=100.0%  ✓ COMPLETE
+  overlap      : 89 cells  (28.7% of floor)  = 35600 cm²  | extra visits: 127  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep3_final.png  (path length: 437 positions)
+
+── Episode 4  (start=(10, 8)  objects=0) ──
+  strip order  : [3, 0, 1, 2]
+  steps=428  reward=331.7  coverage=100.0%  ✓ COMPLETE
+  overlap      : 79 cells  (25.5% of floor)  = 31600 cm²  | extra visits: 119  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep4_final.png  (path length: 429 positions)
+
+── Episode 5  (start=(9, 8)  objects=0) ──
+  strip order  : [3, 0, 1, 2]
+  steps=429  reward=331.6  coverage=100.0%  ✓ COMPLETE
+  overlap      : 80 cells  (25.8% of floor)  = 32000 cm²  | extra visits: 120  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep5_final.png  (path length: 430 positions)
+
+── Episode 6  (start=(15, 29)  objects=0) ──
+  strip order  : [2, 1, 0, 3]
+  steps=468  reward=327.7  coverage=100.0%  ✓ COMPLETE
+  overlap      : 84 cells  (27.1% of floor)  = 33600 cm²  | extra visits: 159  | max: 6×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep6_final.png  (path length: 469 positions)
+
+── Episode 7  (start=(12, 21)  objects=0) ──
+  strip order  : [2, 3, 0, 1]
+  steps=447  reward=329.8  coverage=100.0%  ✓ COMPLETE
+  overlap      : 70 cells  (22.6% of floor)  = 28000 cm²  | extra visits: 138  | max: 6×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep7_final.png  (path length: 448 positions)
+
+── Episode 8  (start=(6, 12)  objects=0) ──
+  strip order  : [2, 3, 1, 0]
+  steps=450  reward=329.5  coverage=100.0%  ✓ COMPLETE
+  overlap      : 83 cells  (26.8% of floor)  = 33200 cm²  | extra visits: 141  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep8_final.png  (path length: 451 positions)
+
+── Episode 9  (start=(7, 37)  objects=0) ──
+  strip order  : [2, 3, 0, 1]
+  steps=428  reward=331.7  coverage=100.0%  ✓ COMPLETE
+  overlap      : 64 cells  (20.6% of floor)  = 25600 cm²  | extra visits: 119  | max: 5×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep9_final.png  (path length: 429 positions)
+
+── Episode 10  (start=(12, 31)  objects=0) ──
+  strip order  : [2, 3, 1, 0]
+  steps=427  reward=331.8  coverage=100.0%  ✓ COMPLETE
+  overlap      : 51 cells  (16.5% of floor)  = 20400 cm²  | extra visits: 118  | max: 6×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env2/eval_ep10_final.png  (path length: 428 positions)
+
+── Summary (10 episodes, 0 objects each) ──
+  Mean coverage      : 100.0%
+  Min  coverage      : 100.0%
+  Full coverage      : 10/10
+  ── Overlap ──
+  Mean overlap cells : 74.1
+  Mean overlap %     : 23.9%
+  Mean overlap area  : 29640 cm²
+  Mean extra visits  : 127.9
+

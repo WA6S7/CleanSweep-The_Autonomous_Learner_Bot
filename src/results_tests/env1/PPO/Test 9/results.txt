@@ -1,0 +1,28 @@
+SIMULATION:
+
+[INFO] [1778240518.153459846] [visualiser_gt]: ==================================================
+[INFO] [1778240518.154335471] [visualiser_gt]:        RUN SUMMARY
+[INFO] [1778240518.156382883] [visualiser_gt]: ==================================================
+[INFO] [1778240518.157535295] [visualiser_gt]:   Coverage         : 73.8%
+[INFO] [1778240518.157930758] [visualiser_gt]:   Unique cells     : 79
+[INFO] [1778240518.158372882] [visualiser_gt]:   Revisited cells  : 62
+[INFO] [1778240518.159024351] [visualiser_gt]:   Max visits/cell  : 12
+[INFO] [1778240518.159674842] [visualiser_gt]:   Total visits     : 240
+[INFO] [1778240518.160233865] [visualiser_gt]:   Overlap visits   : 161
+[INFO] [1778240518.160805732] [visualiser_gt]:   Overlap          : 67.1%
+[INFO] [1778240518.161392012] [visualiser_gt]:   Elapsed time     : 20m 56.6s
+[INFO] [1778240518.162061188] [visualiser_gt]: ==================================================
+
+
+REAL:
+
+[INFO] [1778605988.052724349] [coverage_map_visualiser]: ==================================================
+[INFO] [1778605988.054242099] [coverage_map_visualiser]:          RUN SUMMARY
+[INFO] [1778605988.055844061] [coverage_map_visualiser]: ==================================================
+[INFO] [1778605988.057433873] [coverage_map_visualiser]:   Coverage        : 59.8%
+[INFO] [1778605988.058579263] [coverage_map_visualiser]:   Unique steps    : 64
+[INFO] [1778605988.059452020] [coverage_map_visualiser]:   Total visits    : 778
+[INFO] [1778605988.060336000] [coverage_map_visualiser]:   Overlap visits  : 714
+[INFO] [1778605988.061344585] [coverage_map_visualiser]:   Overlap         : 91.8%
+[INFO] [1778605988.062322809] [coverage_map_visualiser]:   Elapsed time    : 26m 55.5s
+[INFO] [1778605988.063345762] [coverage_map_visualiser]: ==================================================

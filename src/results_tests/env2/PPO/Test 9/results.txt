@@ -1,0 +1,13 @@
+SIMULATION:
+
+[INFO] [1778363905.661971528] [visualiser_gt]: ==================================================
+[INFO] [1778363905.662892101] [visualiser_gt]:          RUN SUMMARY
+[INFO] [1778363905.663579280] [visualiser_gt]: ==================================================
+[INFO] [1778363905.664394325] [visualiser_gt]:   Coverage        : 90.0%
+[INFO] [1778363905.665168400] [visualiser_gt]:   Unique steps    : 279
+[INFO] [1778363905.665988587] [visualiser_gt]:   Total visits    : 508
+[INFO] [1778363905.666785558] [visualiser_gt]:   Overlap visits  : 229
+[INFO] [1778363905.667591476] [visualiser_gt]:   Overlap         : 45.1%
+[INFO] [1778363905.668377701] [visualiser_gt]:   Elapsed time    : 48m 21.7s
+[INFO] [1778363905.669156002] [visualiser_gt]: ==================================================
+

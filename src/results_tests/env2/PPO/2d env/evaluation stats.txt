@@ -1,0 +1,78 @@
+[room] Pruned 1 disconnected free region(s) (133 cells) outside the main interior
+[room] Loaded 'real_corridor.sdf'  grid=17×41  interior_free=310  walls=387
+[CellCoverageEnv] grid=17x41  interior=310  cell=0.2m  objects/ep=0  obj_size=1-3cells  obs_shape=(4, 17, 41)  actions=4
+Loaded model: ppo_env2_corridor_v3/ppo_model_final
+
+-- Episode 1  (start=(8, 12)  free_cells=310) --
+  steps=685  reward=232.5  coverage=100.0%  COMPLETE
+  actions: PPO=671 (98%)  BFS-assist=14 (2%)
+  overlap: 187 cells (60.3%)  extra_visits=376  max=12x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep1.png
+
+-- Episode 2  (start=(6, 8)  free_cells=310) --
+  steps=631  reward=249.8  coverage=100.0%  COMPLETE
+  actions: PPO=621 (98%)  BFS-assist=10 (2%)
+  overlap: 170 cells (54.8%)  extra_visits=322  max=17x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep2.png
+
+-- Episode 3  (start=(10, 31)  free_cells=310) --
+  steps=551  reward=275.4  coverage=100.0%  COMPLETE
+  actions: PPO=544 (99%)  BFS-assist=7 (1%)
+  overlap: 151 cells (48.7%)  extra_visits=242  max=7x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep3.png
+
+-- Episode 4  (start=(10, 16)  free_cells=310) --
+  steps=1206  reward=65.8  coverage=100.0%  COMPLETE
+  actions: PPO=1111 (92%)  BFS-assist=95 (8%)
+  overlap: 174 cells (56.1%)  extra_visits=897  max=123x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep4.png
+
+-- Episode 5  (start=(10, 5)  free_cells=310) --
+  steps=553  reward=274.7  coverage=100.0%  COMPLETE
+  actions: PPO=551 (100%)  BFS-assist=2 (0%)
+  overlap: 162 cells (52.3%)  extra_visits=244  max=5x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep5.png
+
+-- Episode 6  (start=(9, 1)  free_cells=310) --
+  steps=504  reward=290.4  coverage=100.0%  COMPLETE
+  actions: PPO=504 (100%)  BFS-assist=0 (0%)
+  overlap: 157 cells (50.6%)  extra_visits=195  max=4x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep6.png
+
+-- Episode 7  (start=(8, 7)  free_cells=310) --
+  steps=577  reward=267.1  coverage=100.0%  COMPLETE
+  actions: PPO=560 (97%)  BFS-assist=17 (3%)
+  overlap: 157 cells (50.6%)  extra_visits=268  max=13x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep7.png
+
+-- Episode 8  (start=(14, 30)  free_cells=310) --
+  steps=570  reward=269.3  coverage=100.0%  COMPLETE
+  actions: PPO=553 (97%)  BFS-assist=17 (3%)
+  overlap: 159 cells (51.3%)  extra_visits=261  max=14x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep8.png
+
+-- Episode 9  (start=(7, 38)  free_cells=310) --
+  steps=561  reward=272.2  coverage=100.0%  COMPLETE
+  actions: PPO=554 (99%)  BFS-assist=7 (1%)
+  overlap: 155 cells (50.0%)  extra_visits=252  max=6x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep9.png
+
+-- Episode 10  (start=(15, 32)  free_cells=310) --
+  steps=744  reward=213.6  coverage=100.0%  COMPLETE
+  actions: PPO=715 (96%)  BFS-assist=29 (4%)
+  overlap: 164 cells (52.9%)  extra_visits=435  max=60x
+  -> eval_2d_runs/ppo_env2/ppo_eval_ep10.png
+
+==============================================================
+  Summary (10 episodes, 0 objects each)
+==============================================================
+  Mean coverage       : 100.0%
+  Min  coverage       : 100.0%
+  Full coverage       : 10/10
+  Mean steps          : 658
+  Actions             : PPO=6384 (97%)  BFS-assist=198 (3%)
+  Mean overlap cells  : 163.6
+  Mean overlap %      : 52.8%
+  Mean extra visits   : 349.2
+==============================================================
+

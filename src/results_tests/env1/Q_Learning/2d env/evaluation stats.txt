@@ -1,0 +1,74 @@
+[room] Loaded 'real_bedroom.sdf'  grid=17×15  interior_free=107  walls=148
+[CoverageEnv] grid=17×15  interior=107  strips=4  objects_per_ep=0  obj_size=1–3cells (10–30cm)  state_space=1,024
+[QLearningAgent] Loaded ← results_20cm_cells/q_table_final.pkl  (324 states)
+
+── Episode 1  (start=(10, 10)  objects=0) ──
+  strip order  : [3, 1, 2, 0]
+  steps=156  reward=145.7  coverage=100.0%  ✓ COMPLETE
+  overlap      : 36 cells  (33.6% of floor)  = 14400 cm²  | extra visits: 50  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep1_final.png  (path length: 157 positions)
+
+── Episode 2  (start=(14, 10)  objects=0) ──
+  strip order  : [0, 3, 1, 2]
+  steps=162  reward=145.1  coverage=100.0%  ✓ COMPLETE
+  overlap      : 34 cells  (31.8% of floor)  = 13600 cm²  | extra visits: 56  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep2_final.png  (path length: 163 positions)
+
+── Episode 3  (start=(12, 7)  objects=0) ──
+  strip order  : [0, 1, 2, 3]
+  steps=137  reward=147.6  coverage=100.0%  ✓ COMPLETE
+  overlap      : 31 cells  (29.0% of floor)  = 12400 cm²  | extra visits: 31  | max: 2×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep3_final.png  (path length: 138 positions)
+
+── Episode 4  (start=(4, 5)  objects=0) ──
+  strip order  : [3, 2, 0, 1]
+  steps=160  reward=145.3  coverage=100.0%  ✓ COMPLETE
+  overlap      : 47 cells  (43.9% of floor)  = 18800 cm²  | extra visits: 54  | max: 3×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep4_final.png  (path length: 161 positions)
+
+── Episode 5  (start=(14, 9)  objects=0) ──
+  strip order  : [0, 1, 3, 2]
+  steps=153  reward=146.0  coverage=100.0%  ✓ COMPLETE
+  overlap      : 45 cells  (42.1% of floor)  = 18000 cm²  | extra visits: 47  | max: 3×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep5_final.png  (path length: 154 positions)
+
+── Episode 6  (start=(11, 9)  objects=0) ──
+  strip order  : [0, 3, 1, 2]
+  steps=158  reward=145.5  coverage=100.0%  ✓ COMPLETE
+  overlap      : 51 cells  (47.7% of floor)  = 20400 cm²  | extra visits: 52  | max: 3×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep6_final.png  (path length: 159 positions)
+
+── Episode 7  (start=(8, 5)  objects=0) ──
+  strip order  : [0, 1, 3, 2]
+  steps=151  reward=146.2  coverage=100.0%  ✓ COMPLETE
+  overlap      : 43 cells  (40.2% of floor)  = 17200 cm²  | extra visits: 45  | max: 3×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep7_final.png  (path length: 152 positions)
+
+── Episode 8  (start=(13, 6)  objects=0) ──
+  strip order  : [0, 1, 2, 3]
+  steps=139  reward=147.4  coverage=100.0%  ✓ COMPLETE
+  overlap      : 32 cells  (29.9% of floor)  = 12800 cm²  | extra visits: 33  | max: 3×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep8_final.png  (path length: 140 positions)
+
+── Episode 9  (start=(9, 5)  objects=0) ──
+  strip order  : [3, 0, 2, 1]
+  steps=165  reward=144.8  coverage=100.0%  ✓ COMPLETE
+  overlap      : 41 cells  (38.3% of floor)  = 16400 cm²  | extra visits: 59  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep9_final.png  (path length: 166 positions)
+
+── Episode 10  (start=(10, 5)  objects=0) ──
+  strip order  : [3, 0, 2, 1]
+  steps=164  reward=144.9  coverage=100.0%  ✓ COMPLETE
+  overlap      : 40 cells  (37.4% of floor)  = 16000 cm²  | extra visits: 58  | max: 4×
+  → /home/user/thesis_ws/src/clean_sweep_rl_v2/eval_2d_runs/qlearning_env1/eval_ep10_final.png  (path length: 165 positions)
+
+── Summary (10 episodes, 0 objects each) ──
+  Mean coverage      : 100.0%
+  Min  coverage      : 100.0%
+  Full coverage      : 10/10
+  ── Overlap ──
+  Mean overlap cells : 40.0
+  Mean overlap %     : 37.4%
+  Mean overlap area  : 16000 cm²
+  Mean extra visits  : 48.5
+
