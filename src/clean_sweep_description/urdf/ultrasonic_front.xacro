@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="ultra_front_length" value="0.02"/>
+    <xacro:property name="ultra_front_width"  value="0.05"/>
+    <xacro:property name="ultra_front_height" value="0.025"/>
+    <xacro:property name="ultra_front_min_range" value="0.02"/>
+    <xacro:property name="ultra_front_max_range" value="4.25"/>
+    <xacro:property name="ultra_front_range_resolution" value="0.01"/>
+    <xacro:property name="ultra_front_half_fov_h" value="${60.0 * pi / 180.0}"/>
+
+    <link name="ultrasonic_front_link">
+        <visual>
+            <geometry>
+                <box size="${ultra_front_length} ${ultra_front_width} ${ultra_front_height}"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="${ultra_front_length} ${ultra_front_width} ${ultra_front_height}"/>
+            </geometry>
+        </collision>
+
+        <xacro:box_inertia 
+            m="0.02" 
+            x="${ultra_front_length}" 
+            y="${ultra_front_width}" 
+            z="${ultra_front_height}"
+            o_xyz="0 0 0" 
+            o_rpy="0 0 0" />
+    </link>
+
+    <joint name="base_ultrasonic_front_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="ultrasonic_front_link"/>
+        <origin xyz="${(base_length/2.0) - (ultra_front_length/2.0)} 0 0.089" rpy="0 0.087266 0"/>
+    </joint>
+
+    <gazebo reference="ultrasonic_front_link">
+        <sensor name="ultrasonic_front" type="gpu_lidar">
+            <always_on>true</always_on>
+            <update_rate>20</update_rate>
+            <visualize>true</visualize>
+
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>${-ultra_front_half_fov_h}</min_angle>
+                        <max_angle>${ultra_front_half_fov_h}</max_angle>
+                    </horizontal>
+                    
+                </scan>
+
+                <range>
+                    <min>${ultra_front_min_range}</min>
+                    <max>${ultra_front_max_range}</max>
+                    <resolution>${ultra_front_range_resolution}</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </lidar>
+
+            <topic>/ultrasonic_front</topic>
+
+        </sensor>
+    </gazebo>   
+
+</robot>

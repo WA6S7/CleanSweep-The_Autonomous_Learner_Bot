@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="base_length" value="0.235" />
+    <xacro:property name="base_width" value="0.152" />
+    <xacro:property name="base_height" value="0.105" />
+    <xacro:property name="wheel_radius" value="0.033" />
+    <xacro:property name="wheel_length" value="0.026" />
+
+    <!-- Measured wheel centre locations for Elegoo Smart Robot Car Kit v4.0 -->
+    <xacro:property name="wheel_center_from_ends" value="0.075" />
+    <xacro:property name="wheel_x_front" value="${base_length/2.0 - wheel_center_from_ends}" />  
+    <xacro:property name="wheel_x_rear"  value="${-base_length/2.0 + wheel_center_from_ends}" /> 
+    <xacro:property name="wheel_y" value="${base_width/2.0 - wheel_length/2.0}" />               
+
+    <xacro:property name="base_clearance" value="0.016" />
+    <xacro:property name="wheel_z" value="${wheel_radius - base_clearance}" />  
+    <link name="base_footprint" />
+
+    <!-- ==================================================================== -->
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}" />
+            </geometry>
+            <origin xyz="0 0 ${(base_height / 2.0) + 0.016}" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+
+        <xacro:box_inertia m="5.0" x="${base_length}" y="${base_width}" z="${base_height}"
+                           o_xyz="0 0 ${(base_height / 2.0) + 0.016}" o_rpy="0 0 0" />
+        
+        <collision>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}" />
+            </geometry>
+            <origin xyz="0 0 ${(base_height / 2.0) + 0.016}" rpy="0 0 0" /> 
+        </collision>
+    </link>
+
+    <xacro:macro name="wheel_link" params="name">
+        <link name="${name}">
+            <visual>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="${pi / 2.0} 0 0" />
+                <material name="yellow" />
+            </visual>
+
+            <xacro:cylinder_inertia m="1.0" r="${wheel_radius}" l="${wheel_length}"
+                                    o_xyz="0 0 0" o_rpy="${pi / 2.0} 0 0" />
+
+            <collision>
+                <geometry>
+                    <sphere radius="${wheel_radius}"/>
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />    
+            </collision>
+
+        </link>
+    </xacro:macro>
+
+    <xacro:wheel_link name="front_left_wheel_link" />
+    <xacro:wheel_link name="front_right_wheel_link" />
+    <xacro:wheel_link name="rear_left_wheel_link" />
+    <xacro:wheel_link name="rear_right_wheel_link" />
+
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 ${base_clearance}" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="front_left_wheel_link" />
+        <origin xyz="${wheel_x_front} ${wheel_y} ${wheel_z}" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="front_right_wheel_link" />
+        <origin xyz="${wheel_x_front} -${wheel_y} ${wheel_z}" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="rear_left_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="rear_left_wheel_link" />
+        <origin xyz="${wheel_x_rear}  ${wheel_y} ${wheel_z}" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="rear_right_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="rear_right_wheel_link" />
+        <origin xyz="${wheel_x_rear} -${wheel_y} ${wheel_z}" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+</robot>

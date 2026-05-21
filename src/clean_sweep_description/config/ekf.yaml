@@ -1,0 +1,52 @@
+ekf_filter_node:
+  ros__parameters:
+    frequency: 50.0
+    sensor_timeout: 0.2
+    two_d_mode: true
+
+    # cmd_vel_odom_node publishes odom to base_footprint
+    publish_tf: false           
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_footprint
+    world_frame: odom
+
+    # --- Source 0: dead-reckoning odometry (cmd_vel + IMU heading) ---
+    # Fuses x, y as DIFFERENTIAL so dead-reckoning provides relative motion but cannot
+    # override absolute ArUco corrections. Also fuses yaw angular velocity.
+    odom0: /odom
+    odom0_config: [true,  true,  false,
+                   false, false, false,
+                   false, false, false,
+                   false, false, true,
+                   false, false, false]
+    odom0_differential: true
+    odom0_relative: false
+    odom0_queue_size: 10
+
+    # --- Source 1: MPU-6050 IMU ---
+    # Fuses the yaw rate from gyroscope only.
+    # MPU-6050 has no magnetometer so it cannot provide absolute yaw orientation.
+    imu0: /imu
+    imu0_config: [false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, true,
+                  false, false, false]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true
+    imu0_queue_size: 10
+
+    # --- Source 2: ArUco marker fixes ---
+    # Absolute x, y, yaw from visual marker detection.
+    # Low rate but high accuracy 
+    pose0: /aruco/pose
+    pose0_config: [true,  true,  false,
+                   false, false, true,
+                   false, false, false,
+                   false, false, false,
+                   false, false, false]
+    pose0_differential: false
+    pose0_relative: false
+    pose0_queue_size: 5
