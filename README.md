@@ -1,4 +1,4 @@
-# CleanSweep — Reinforcement-Learning Coverage Path Planning for an Autonomous Cleaning Robot
+# CleanSweep — The Autonomous Learner Bot
 
 **Jeremy Galea** University of Malta — Faculty of ICT, Department of Artificial Intelligence
 
